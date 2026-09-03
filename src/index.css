@@ -1,0 +1,157 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@theme {
+  --color-rapid-50: #f7f8f3;
+  --color-rapid-100: #ecefe2;
+  --color-rapid-200: #d8dec5;
+  --color-rapid-300: #bcc79e;
+  --color-rapid-400: #9ca86f;
+  --color-rapid-500: #7d8a4f;
+  --color-rapid-600: #627c36;
+  --color-rapid-700: #4d632b;
+  --color-rapid-800: #3f4f25;
+  --color-rapid-900: #364322;
+  --color-beige-bg: #f8f6f0;
+  --font-display: 'Inter', system-ui, sans-serif;
+}
+
+html, body {
+  font-family: inherit;
+  background-color: #f8f6f0;
+}
+
+/* Hide scrollbar for color fan */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Grain texture overlay for Rustikal */
+.grain-overlay {
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(0,0,0,0.06) 0.5px, transparent 1px),
+    radial-gradient(circle at 70% 60%, rgba(0,0,0,0.05) 0.5px, transparent 1px),
+    radial-gradient(circle at 40% 80%, rgba(0,0,0,0.04) 0.5px, transparent 1px),
+    radial-gradient(circle at 90% 20%, rgba(0,0,0,0.05) 0.5px, transparent 1px);
+  background-size: 4px 4px, 5px 5px, 3px 3px, 6px 6px;
+}
+
+/* Straw fiber texture */
+.straw-overlay {
+  background-image:
+    linear-gradient(105deg, transparent 30%, rgba(184,150,80,0.12) 31%, rgba(184,150,80,0.12) 32%, transparent 33%),
+    linear-gradient(75deg, transparent 50%, rgba(160,130,60,0.1) 51%, rgba(160,130,60,0.1) 52%, transparent 53%),
+    linear-gradient(95deg, transparent 20%, rgba(200,170,90,0.08) 21%, rgba(200,170,90,0.08) 22%, transparent 23%);
+  background-size: 18px 18px, 24px 24px, 14px 14px;
+}
+
+/* Mica shimmer effect */
+.mica-overlay {
+  background-image:
+    linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 20%, rgba(255,255,255,0.1) 40%, transparent 60%, rgba(255,255,255,0.12) 80%, transparent 100%),
+    linear-gradient(45deg, rgba(220,220,200,0.08) 0%, transparent 25%, rgba(200,200,180,0.06) 50%, transparent 75%);
+  background-size: 30px 30px, 25px 25px;
+}
+
+/* Glass bead effect (kept for compatibility) */
+.glassbead-overlay {
+  background-image:
+    radial-gradient(circle at 30% 40%, rgba(255,255,255,0.18) 1px, transparent 2px),
+    radial-gradient(circle at 60% 70%, rgba(255,255,255,0.15) 1px, transparent 2px),
+    radial-gradient(circle at 80% 20%, rgba(255,255,255,0.12) 0.5px, transparent 1.5px);
+  background-size: 12px 12px, 16px 16px, 8px 8px;
+}
+
+/* Technique: Rolled (Malerwalze) — subtle stipple */
+.technique-rolled {
+  background-image:
+    radial-gradient(circle at 25% 25%, rgba(0,0,0,0.03) 1px, transparent 2px),
+    radial-gradient(circle at 75% 75%, rgba(0,0,0,0.03) 1px, transparent 2px);
+  background-size: 8px 8px, 10px 10px;
+}
+
+/* Technique: Brushed (Quast) — directional streaks */
+.technique-brushed {
+  background-image:
+    linear-gradient(85deg, transparent 40%, rgba(0,0,0,0.04) 41%, rgba(0,0,0,0.04) 43%, transparent 44%),
+    linear-gradient(88deg, transparent 60%, rgba(0,0,0,0.03) 61%, rgba(0,0,0,0.03) 63%, transparent 64%);
+  background-size: 20px 20px, 28px 28px;
+}
+
+/* Technique: Troweled (Glättkelle) — smooth with faint edges */
+.technique-troweled {
+  background-image:
+    linear-gradient(120deg, transparent 45%, rgba(0,0,0,0.02) 46%, transparent 47%),
+    linear-gradient(60deg, transparent 70%, rgba(255,255,255,0.03) 71%, transparent 72%);
+  background-size: 40px 40px, 35px 35px;
+}
+
+/* Rohbau overlay — visible seams and cable traces */
+.rohbau-overlay {
+  background-image:
+    linear-gradient(90deg, transparent 30%, rgba(120,100,80,0.15) 31%, rgba(120,100,80,0.15) 33%, transparent 34%),
+    linear-gradient(0deg, transparent 60%, rgba(100,90,70,0.12) 61%, rgba(100,90,70,0.12) 62%, transparent 63%);
+  background-size: 100% 100%, 100% 100%;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.4s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-slide-in {
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.shimmer-effect {
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* AI loading pulse at click location */
+@keyframes aiPulse {
+  0% {
+    transform: translate(-50%, -50%) scale(0.5);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(3);
+    opacity: 0;
+  }
+}
+
+.ai-pulse-ring {
+  animation: aiPulse 1.5s ease-out infinite;
+}
